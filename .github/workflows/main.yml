@@ -1,19 +1,31 @@
+name: Lint
+
 on:
   push:
     branches:
       - main
   pull_request: {}
 
+permissions:
+  checks: write
+  contents: write
+
 jobs:
   my_job:
-    name: deploy to staging
-    runs-on: ubuntu-18.04
+    name: run linters
+    runs-on: ubuntu-latest
   
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '16'
-    - run: npm install
-    - run: npm lint
-    - run: npm test
+      - name: Check out git repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16'
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v2
