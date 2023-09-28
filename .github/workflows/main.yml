@@ -1,7 +1,10 @@
 name: default
 
 on:
-  pull-request
+  pull_request:
+    branches:
+      - main
+      - local
 
 steps:
 - uses: actions/checkout@v2
