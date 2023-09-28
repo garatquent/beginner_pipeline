@@ -1,16 +1,18 @@
-name: default
-
 on:
   pull_request:
     branches:
       - main
-      - local
 
-steps:
-- uses: actions/checkout@v2
-- uses: actions/setup-node@v2
-  with:
-    node-version: '16'
-- run: npm install
-- run: npm lint
-- run: npm test
+jobs:
+  my_job:
+    name: deploy to staging
+    runs-on: ubuntu-18.04
+  
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+    - run: npm install
+    - run: npm lint
+    - run: npm test
