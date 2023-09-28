@@ -11,7 +11,7 @@ permissions:
   contents: write
 
 jobs:
-  my_job:
+  lint:
     name: run linters
     runs-on: ubuntu-latest
   
