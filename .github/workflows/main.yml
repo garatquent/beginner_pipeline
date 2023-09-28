@@ -2,7 +2,6 @@ on:
   push:
     branches:
       - main
-      - local
   pull_request: {}
 
 jobs:
